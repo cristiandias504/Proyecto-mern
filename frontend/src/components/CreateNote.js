@@ -19,7 +19,7 @@ class CreateNote extends Component {
     }
 
     async componentDidMount() {
-        const res = await axios.get('http://localhost:4000/api/users')
+        const res = await axios.get('http://backend:4000/api/users')
         this.setState({
             users: res.data.map(user => user.username),
             userSelected: res.data[0].username
@@ -48,10 +48,10 @@ class CreateNote extends Component {
 
         if (this.state.editing) {
             console.log("if " + this.state.editing)
-            await axios.put('http://localhost:4000/api/notes/' + this.state._id, newNote)
+            await axios.put('http://backend:4000/api/notes/' + this.state._id, newNote)
         } else {
             console.log("if " + this.state.editing)
-            await axios.post('http://localhost:4000/api/notes', newNote);
+            await axios.post('http://backend:4000/api/notes', newNote);
         }
         window.location.href = '/';
     }

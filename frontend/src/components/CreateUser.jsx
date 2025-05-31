@@ -9,7 +9,7 @@ export default class CreateUser extends Component {
     }
 
     async componentDidMount(){
-        const res = await axios.get('http://localhost:4000/api/users');
+        const res = await axios.get('http://backend:4000/api/users');
         this.setState({users: res.data});
     }
 
@@ -20,15 +20,15 @@ export default class CreateUser extends Component {
     }
 
     onSubmit = async e => {
-        await axios.post('http://localhost:4000/api/users', {
+        await axios.post('http://backend:4000/api/users', {
             username: this.state.username
         })
         //e.preventDefault();
     }
 
     deleteUser = async (id) => {
-        await axios.delete('http://localhost:4000/api/users/' + id)
-        const res = await axios.get('http://localhost:4000/api/users');
+        await axios.delete('http://backend:4000/api/users/' + id)
+        const res = await axios.get('http://backend:4000/api/users');
         this.setState({users: res.data});
     }
 
